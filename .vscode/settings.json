@@ -1,0 +1,26 @@
+{
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.redwood": true,
+    "**/.vscode": true,
+    ".editorconfig": true,
+    ".env.defaults": true,
+    ".env.example": true,
+    "LICENSE": true,
+    "yarn.lock": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[prisma]": {
+    "editor.formatOnSave": true
+  }
+}
