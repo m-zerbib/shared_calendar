@@ -4,14 +4,21 @@ import {
   FieldError,
   Label,
   TextField,
+  CheckboxField,
   Submit,
-} from '@redwoodjs/forms'
+} from '@redwoodjs/forms';
+
+
+import {DatePicker} from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
 
 const EventForm = (props) => {
+  const [start, setStart] = React.useState(null)
+  const [end, setEnd] = React.useState(null)
+  console.log(`end is `, end, `start is `, start)
   const onSubmit = (data) => {
-    props.onSave(data, props?.event?.id)
+    props.onSave({ ...data, start, end }, props?.event?.id)
   }
-
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -39,20 +46,76 @@ const EventForm = (props) => {
         <FieldError name="title" className="rw-field-error" />
 
         <Label
-          name="time"
+          name="start"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Time
+          Start time
         </Label>
-        <TextField
-          name="time"
-          defaultValue={props.event?.time}
+        {/* <TextField
+
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          validation={{ required: false }}
+        /> */}
+
+        <DatePicker
+          name="start"
+          placeholder='Start Date and Time'
+          onChange={setStart}
+          defaultValue={props.event?.start}
+          format="YYYY-MM-DD HH:mm"
+          ranges={[
+              {
+                label: 'Now',
+                value: new Date()
+              }
+            ]}
         />
-        <FieldError name="time" className="rw-field-error" />
+        <FieldError name="start" className="rw-field-error" />
+        <Label
+          name="end"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          End time
+        </Label>
+        <DatePicker
+          name="end"
+          placeholder='End Date and Time'
+          onChange={setEnd}
+          defaultValue={props.event?.end}
+          format="YYYY-MM-DD HH:mm"
+          ranges={[
+              {
+                label: 'Now',
+                value: new Date()
+              }
+            ]}
+        />
+        {/* <TextField
+          name="end"
+          defaultValue={props.event?.end}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: false }}
+        /> */}
+        <FieldError name="end" className="rw-field-error" />
+
+        <Label
+          name="allDay"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Is all day
+        </Label>
+        <CheckboxField
+          name="allDay"
+          defaultChecked={props.event?.allDay}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+        <FieldError name="allDay" className="rw-field-error" />
 
         <Label
           name="description"
@@ -66,7 +129,7 @@ const EventForm = (props) => {
           defaultValue={props.event?.description}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          validation={{ required: false }}
         />
         <FieldError name="description" className="rw-field-error" />
 

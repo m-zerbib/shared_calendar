@@ -17,13 +17,16 @@ describe('events', () => {
     const result = await createEvent({
       input: {
         title: 'String',
-        time: '2021-02-27T03:13:44Z',
+        start: '2021-02-28T04:26:16Z',
+        end: '2021-02-28T04:26:16Z',
         userId: 'scenario.event.two.userId',
       },
     })
 
     expect(result.title).toEqual('String')
-    expect(result.time).toEqual('2021-02-27T03:13:44Z')
+    expect(result.start).toEqual('2021-02-28T04:26:16Z')
+    expect(result.end).toEqual('2021-02-28T04:26:16Z')
+    expect(result.allDay).toEqual()
     expect(result.userId).toEqual('scenario.event.two.userId')
   })
 

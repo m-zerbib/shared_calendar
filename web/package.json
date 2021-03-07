@@ -16,8 +16,11 @@
     "@redwoodjs/forms": "^0.26.2",
     "@redwoodjs/router": "^0.26.2",
     "@redwoodjs/web": "^0.26.2",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-big-calendar": "^0.32.0",
+    "react-dom": "^16.13.1",
+    "rsuite": "^4.9.2"
   }
 }

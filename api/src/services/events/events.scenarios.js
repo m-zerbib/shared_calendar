@@ -2,13 +2,15 @@ export const standard = defineScenario({
   event: {
     one: {
       title: 'String',
-      time: '2021-02-27T03:13:44Z',
+      start: '2021-02-28T04:26:16Z',
+      end: '2021-02-28T04:26:16Z',
       created_by: { create: { name: 'String' } },
     },
 
     two: {
       title: 'String',
-      time: '2021-02-27T03:13:44Z',
+      start: '2021-02-28T04:26:16Z',
+      end: '2021-02-28T04:26:16Z',
       created_by: { create: { name: 'String' } },
     },
   },

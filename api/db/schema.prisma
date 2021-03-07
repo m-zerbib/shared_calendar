@@ -30,12 +30,14 @@ enum Color {
   Pink
   Brown
 }
+
 model Event {
   title String
-  time DateTime
+  start DateTime @map("start_time")
+  end DateTime @map("end_time")
+  allDay Boolean @map("is_all_day")
   description String?
   created_by User
   id String @id @default(uuid())
   color_tag Color?
-
 }

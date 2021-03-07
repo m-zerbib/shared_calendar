@@ -4,14 +4,13 @@ export const QUERY = gql`
   query FIND_EVENT_BY_ID($id: String!) {
     event: event(id: $id) {
       title
-      time
+      start
+      end
+      allDay
       description
       id
       color_tag
       userId
-      created_by {
-        name
-      }
     }
   }
 `

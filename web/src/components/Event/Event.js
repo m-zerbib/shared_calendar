@@ -45,13 +45,67 @@ const Event = ({ event }) => {
       deleteEvent({ variables: { id } })
     }
   }
+
   return (
     <>
-      <div>
-        Title: {event.title} {''}
-        Created By: {event.created_by.name}
+      <div className="rw-segment">
+        <header className="rw-segment-header">
+          <h2 className="rw-heading rw-heading-secondary">
+            Event {event.id} Detail
+          </h2>
+        </header>
+        <table className="rw-table">
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <td>{event.title}</td>
+            </tr>
+            <tr>
+              <th>Start time</th>
+              <td>{timeTag(event.start)}</td>
+            </tr>
+            <tr>
+              <th>End time</th>
+              <td>{timeTag(event.end)}</td>
+            </tr>
+            <tr>
+              <th>Is all day</th>
+              <td>{checkboxInputTag(event.allDay)}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{event.description}</td>
+            </tr>
+            <tr>
+              <th>Id</th>
+              <td>{event.id}</td>
+            </tr>
+            <tr>
+              <th>Color tag</th>
+              <td>{event.color_tag}</td>
+            </tr>
+            <tr>
+              <th>User id</th>
+              <td>{event.userId}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <button onClick={() => onDeleteClick(event.id)}>Delete Me</button>
+      <nav className="rw-button-group">
+        <Link
+          to={routes.editEvent({ id: event.id })}
+          className="rw-button rw-button-blue"
+        >
+          Edit
+        </Link>
+        <a
+          href="#"
+          className="rw-button rw-button-red"
+          onClick={() => onDeleteClick(event.id)}
+        >
+          Delete
+        </a>
+      </nav>
     </>
   )
 }

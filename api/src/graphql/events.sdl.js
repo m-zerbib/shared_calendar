@@ -1,13 +1,14 @@
 export const schema = gql`
   type Event {
     title: String!
-    time: DateTime!
+    start: DateTime!
+    end: DateTime!
+    allDay: Boolean!
     description: String
     created_by: User!
     id: String!
     color_tag: Color
     userId: String!
-    created_by: User!
   }
 
   enum Color {
@@ -28,7 +29,9 @@ export const schema = gql`
 
   input CreateEventInput {
     title: String!
-    time: DateTime!
+    start: String
+    end: String
+    allDay: Boolean!
     description: String
     color_tag: Color
     userId: String!
@@ -36,7 +39,9 @@ export const schema = gql`
 
   input UpdateEventInput {
     title: String
-    time: DateTime
+    start: String
+    end: String
+    allDay: Boolean
     description: String
     color_tag: Color
     userId: String

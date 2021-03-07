@@ -1,19 +1,47 @@
 import { db } from 'src/lib/db'
 
-export const events = () => {
-  return db.event.findMany()
+export const events = async () => {
+  const events = await db.event.findMany()
+  return events.map((event) => ({
+    ...event,
+    title: event.title,
+    start: event.start,
+    end: event.end,
+    allDay: event.allDay,
+  }))
 }
 
-export const event = ({ id }) => {
-  return db.event.findUnique({
+export const event = async ({ id }) => {
+  const event = await db.event.findUnique({
     where: { id },
-    include: { created_by: true }
   })
+  if (!event) {
+    return event
+  }
+  const { allDay, start, end, ...rest } = event
+  return {
+    allDay: allDay,
+    start: start,
+    end: end,
+    ...rest
+  }
+}
+
+function is_valid_string(value) {
+  return typeof value === 'string' && value.trim() !== ''
 }
 
 export const createEvent = ({ input }) => {
+  const allDay = input.allDay === true ? true : false
+  const start = allDay ? new Date().toISOString() : input.start
+  const end = allDay ? new Date().toISOString() : input.end
   return db.event.create({
-    data: input,
+    data: {
+      ...input,
+      start,
+      end,
+      allDay: allDay === true ? true : false,
+    },
   })
 }
 

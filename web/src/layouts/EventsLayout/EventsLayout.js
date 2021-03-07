@@ -8,7 +8,7 @@ const EventsLayout = (props) => {
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link to={routes.events()} className="rw-link">
-            Events
+            Shared Calendar
           </Link>
         </h1>
         <Link to={routes.newEvent()} className="rw-button rw-button-green">

@@ -6,7 +6,9 @@ export const QUERY = gql`
   query FIND_EVENT_BY_ID($id: String!) {
     event: event(id: $id) {
       title
-      time
+      start
+      end
+      allDay
       description
       id
       color_tag
@@ -18,7 +20,9 @@ const UPDATE_EVENT_MUTATION = gql`
   mutation UpdateEventMutation($id: String!, $input: UpdateEventInput!) {
     updateEvent(id: $id, input: $input) {
       title
-      time
+      start
+      end
+      allDay
       description
       id
       color_tag

@@ -62,7 +62,9 @@ const EventsList = ({ events }) => {
         <thead>
           <tr>
             <th>Title</th>
-            <th>Time</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Is all day</th>
             <th>Description</th>
             <th>Id</th>
             <th>Color tag</th>
@@ -74,7 +76,9 @@ const EventsList = ({ events }) => {
           {events.map((event) => (
             <tr key={event.id}>
               <td>{truncate(event.title)}</td>
-              <td>{timeTag(event.time)}</td>
+              <td>{timeTag(event.start)}</td>
+              <td>{timeTag(event.end)}</td>
+              <td>{checkboxInputTag(event.allDay)}</td>
               <td>{truncate(event.description)}</td>
               <td>{truncate(event.id)}</td>
               <td>{truncate(event.color_tag)}</td>
